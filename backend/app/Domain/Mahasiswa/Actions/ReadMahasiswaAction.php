@@ -33,7 +33,7 @@ class ReadMahasiswaAction
     }
     public function asController($id = "self"): JsonResponse
     {
-        if (isset(Auth::user()->id)) {
+        if (Auth::check()) {
             if ($id == "self" && UserData::fromAuth()->role == UserRoleses::Admin)
                 throw BadRequestException::because("Kamu adalah seorang Admin!! admin harus memberikan spesifik id mahasiswa");
 
